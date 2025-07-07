@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NNNMW046TG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NNNMW046TG');
-</script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - NatureBloom Organics</title>
@@ -43,10 +34,26 @@
             font-size: 16px;
         }
         .contact-form-container button:hover { background-color: #45a049; }
+        #message-status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e6ffe6; /* Light green background */
+            color: #338833; /* Darker green text */
+            border: 1px solid #66cc66;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
         footer { background-color: #333; color: white; text-align: center; padding: 1em 0; margin-top: 30px; }
     </style>
-    </head>
+    <!-- GA4 Tracking Code Placeholder -->
+    <!-- Place your GA4 gtag.js script here, just before </head> -->
+    <!-- GTM Head Snippet Placeholder -->
+    <!-- Place your GTM head snippet here, just before </head> -->
+</head>
 <body>
+    <!-- GTM Body Snippet Placeholder -->
+    <!-- Place your GTM body snippet here, right after <body> -->
     <header>
         <h1>NatureBloom Organics</h1>
         <p>Embrace the Purity of Nature</p>
@@ -61,7 +68,7 @@
         <h1 style="text-align: center; color: #4CAF50; margin-bottom: 30px;">Get in Touch with Us</h1>
         <div class="contact-form-container">
             <p style="text-align: center; margin-bottom: 25px;">We're here to answer any questions you may have about NatureBloom Organics. Fill out the form below or reach us directly.</p>
-            <form action="#" method="POST">
+            <form id="contactForm">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
 
@@ -74,8 +81,10 @@
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" required></textarea>
 
-                <button type="submit" onclick="alert('Form submission is not active on this demo site. Please use the email/phone number below!')">Send Message</button>
+                <button type="submit">Send Message</button>
             </form>
+            <div id="message-status"></div> <!-- This is where the confirmation message will appear -->
+
             <p style="text-align: center; margin-top: 25px;">You can also email us at: <a href="mailto:info@naturebloomorganics.com">info@naturebloomorganics.com</a></p>
             <p style="text-align: center;">Or call us at: +91 98765 43210</p>
         </div>
@@ -84,5 +93,32 @@
     <footer>
         <p>&copy; 2025 NatureBloom Organics. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Get the form and the message status div
+        const contactForm = document.getElementById('contactForm');
+        const messageStatus = document.getElementById('message-status');
+
+        // Add an event listener for form submission
+        contactForm.addEventListener('submit', function(event) {
+            // Prevent the default form submission behavior (which would try to send data)
+            event.preventDefault();
+
+            // Display the success message
+            messageStatus.textContent = 'Thank you for your message! We will get back to you soon.';
+            messageStatus.style.display = 'block'; // Make the message visible
+            messageStatus.style.backgroundColor = '#d4edda'; // Success color
+            messageStatus.style.color = '#155724'; // Success text color
+            messageStatus.style.borderColor = '#c3e6cb'; // Success border color
+
+            // Optionally, clear the form fields after "submission"
+            contactForm.reset();
+
+            // Optionally, hide the message after a few seconds
+            setTimeout(() => {
+                messageStatus.style.display = 'none';
+            }, 5000); // Hide after 5 seconds
+        });
+    </script>
 </body>
 </html>
